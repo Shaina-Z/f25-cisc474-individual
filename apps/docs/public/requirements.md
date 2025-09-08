@@ -9,8 +9,9 @@
     - Administrators should be able to add/delete courses
     - Administrators should be able to enroll/remove students from courses
 
-# Site Map: 
+# [Site Map](site-map.md) 
 
+# [Data Model Diagram](data-model.md)
 
 
 # Wireframes:
