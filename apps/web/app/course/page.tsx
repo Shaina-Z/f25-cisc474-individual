@@ -1,11 +1,16 @@
-import Link from "next/link"
+import "./page.css";
+import Link from "next/link";
 
 export default function Course(){
     return(
-        <div>this will be the courses page
-        <nav>
-        <Link href="/assignment">Assignment</Link>
+        <div>
+            
+            <h1 className="title">TITLE OF COURSE
+                <hr className="profile-border"></hr>
+                <nav>
+        <Link className="assignment" href="/assignment">Assignment</Link>
         </nav>
+            </h1>
         </div>
        
     )

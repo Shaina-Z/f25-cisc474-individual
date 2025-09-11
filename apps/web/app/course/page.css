@@ -1,0 +1,17 @@
+.profile-border{
+    height: 100vh;
+}
+.title{
+    margin-left: 200px;
+    border-left: 1px solid white;
+    font-size: 100px;
+    text-align: center;
+}
+
+.assignment{
+    margin-left: 200px;
+    font-size: xx-large;
+    text-align: center;
+    border-bottom: 1px solid white;
+    font-weight: 100;
+}
