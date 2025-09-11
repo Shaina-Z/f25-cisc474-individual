@@ -1,3 +1,10 @@
+
+.profile-pic{
+    background-color: white;
+    margin-left: 50px;
+    font-size:100px;
+    border-radius: 100%;
+}
 .title{
     text-align: center;
     font-size: 100px;
