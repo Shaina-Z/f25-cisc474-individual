@@ -23,13 +23,12 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <h1>Log In</h1>
-                <hr></hr>
-                <ol>
+                <input type="text" id="username"></input>
+                <input type="text" id="password"></input>
                 <nav>
-                    <Link href="/course">Course</Link>
+                    <Link className="Log in" href="/course-view">Log In</Link>
                 </nav>
-                </ol>
+                
             </main>
         </div>
     );
