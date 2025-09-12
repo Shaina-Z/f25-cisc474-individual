@@ -8,12 +8,9 @@ export default function CourseView(){
           <h1 className="title">Courses
                 <hr className="profile-border"></hr>
                 </h1>
-                <ol>
                 <nav>
                     <Link className="course"href="/course">Course</Link>
                 </nav>
-                <hr></hr>
-                </ol>
                 </div>
     )
 }
