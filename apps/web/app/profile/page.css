@@ -3,5 +3,9 @@
     height:500px;
     background-color: white;
     border-radius: 50%;
-    align-content: center;
+    margin-left: 40vw;
+}
+
+.back-button{
+    font-size:100px;
 }
