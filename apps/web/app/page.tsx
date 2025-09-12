@@ -2,6 +2,7 @@ import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
 import Link from "next/link"
+import "./page.css";
 
 type Props = Omit<ImageProps, "src"> & {
     srcLight: string;
@@ -23,10 +24,10 @@ export default function Home() {
     return (
         <div className={styles.page}>
             <main className={styles.main}>
-                <input type="text" id="username"></input>
-                <input type="text" id="password"></input>
+                <input type="text" id="username" className="username"></input>
+                <input type="text" id="password" className="password"></input>
                 <nav>
-                    <Link className="Log in" href="/course-view">Log In</Link>
+                    <Link className="Log-in" href="/course-view">Log In</Link>
                 </nav>
                 
             </main>

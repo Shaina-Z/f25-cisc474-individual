@@ -1,11 +1,18 @@
+.main{
+    text-align: center;
+}
 
 .profile-pic{
     background-color: white;
-    margin-left: 50px;
+    margin-right: 95vw;
     font-size:100px;
     border-radius: 100%;
+    
 }
 .title{
-    text-align: center;
     font-size: 100px;
+}
+
+.course{
+    font-size: 50px;
 }

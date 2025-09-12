@@ -3,14 +3,15 @@ import "./page.css";
 
 export default function CourseView(){
     return(
-        <div>
+        <div className="main">
             <Link className="profile-pic" href="/profile">.</Link>
           <h1 className="title">Courses</h1>
                 <hr></hr>
                 <ol>
                 <nav>
-                    <Link href="/course">Course</Link>
+                    <Link className="course"href="/course">Course</Link>
                 </nav>
+                <hr></hr>
                 </ol>
                 </div>
     )
