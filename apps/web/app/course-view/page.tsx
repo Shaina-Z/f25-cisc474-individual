@@ -5,8 +5,9 @@ export default function CourseView(){
     return(
         <div className="main">
             <Link className="profile-pic" href="/profile">.</Link>
-          <h1 className="title">Courses</h1>
-                <hr></hr>
+          <h1 className="title">Courses
+                <hr className="profile-border"></hr>
+                </h1>
                 <ol>
                 <nav>
                     <Link className="course"href="/course">Course</Link>

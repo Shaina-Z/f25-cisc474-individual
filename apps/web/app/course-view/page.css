@@ -10,9 +10,16 @@
     
 }
 .title{
+    margin-left: 200px;
+    border-left: 1px solid white;
     font-size: 100px;
+    text-align: center;
 }
 
 .course{
     font-size: 50px;
+}
+
+.profile-border{
+    height: 100vh;
 }
