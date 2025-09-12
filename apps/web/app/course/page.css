@@ -18,3 +18,7 @@ position: fixed;
     margin-left: 50vw;
     font-weight: 100;
 }
+
+.back-button{
+    font-size:50px;
+}

@@ -7,7 +7,6 @@
     margin-right: 95vw;
     font-size:100px;
     border-radius: 100%;
-    
 }
 .title{
     font-size: 100px;
@@ -17,6 +16,9 @@
 
 .course{
     font-size: 50px;
+    border-radius: 16px;
+    border: 1px solid white;
+    margin-top: 100px;
 }
 
 .profile-border{
