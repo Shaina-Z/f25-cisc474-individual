@@ -9,9 +9,12 @@ export default function Course(){
             <h1 className="title">TITLE OF COURSE
                 <hr className="profile-border"></hr>
             </h1>
+            <h2 className="assignments-container">Assignments
+                <hr></hr>
             <nav>
         <Link className="assignment" href="/assignment">Assignment</Link>
         </nav>
+        </h2>
         </div>
        
     )
