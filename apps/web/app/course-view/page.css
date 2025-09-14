@@ -3,22 +3,32 @@
 }
 
 .profile-pic{
-    background-color: white;
-    margin-right: 95vw;
-    font-size:100px;
-    border-radius: 100%;
+    display:block;
+    width: 1.5em;
+    height:1.5em;
+    margin-left:2vw;
+    margin-top: 3vh;
+    font-size: 100px;
+    border: 2px solid grey;
+    border-radius: 50%;
+    color: grey;
+    background-color: grey;
 }
 .title{
+    position: fixed, center;  
     font-size: 100px;
     text-align: center;
     border-bottom: 1px solid white;
 }
 
 .course{
+    display: block;
     font-size: 50px;
     border-radius: 16px;
     border: 1px solid white;
-    margin-top: 100px;
+    margin-top: 10vh;
+    border-radius: 2px;
+    margin-left: 12vw;
 }
 
 .profile-border{
@@ -27,6 +37,6 @@
   bottom: 0;              
   left: 10%;               
   width: 0;                
-  border-left: 1px solid white; 
+  border-left: 1px solid black; 
   z-index: -1; 
 }
