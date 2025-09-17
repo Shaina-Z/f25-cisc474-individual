@@ -8,7 +8,7 @@ position: fixed;
   z-index: -1; 
 }
 .title{
-    font-size: 200px;
+    font-size: 100%;
     text-align: center;
     border-bottom: 1px solid white;
 }
