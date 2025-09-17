@@ -8,24 +8,24 @@ position: fixed;
   z-index: -1; 
 }
 .title{
-    font-size: 100%;
+    font-size: 500%;
     text-align: center;
     border-bottom: 1px solid white;
 }
 
 .assignment{
-    font-size: 50px;
+    font-size: 75%;;
     font-weight: 100;
     text-align: center;
 }
 
 .assignments-container{
     text-align: center;
-    font-size: 75px;
+    font-size: 350%;
     border: 1px solid white;
     margin-left: 10vw;
 }
 
 .back-button{
-    font-size:50px;
+    font-size:150%;
 }
