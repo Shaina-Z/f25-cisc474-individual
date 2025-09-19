@@ -13,22 +13,26 @@ generator client {
 }
 
 model User {
-  id            Int    @id @default(cuid())
+  id            Int    @id @default(autoincrement())
   name          String?
   email         String?   @unique
   role          String
+  courses       Course[] @relation("UserCourses")
 }
 
 model Course{
-  id Int 
+  id Int @id @default(autoincrement())
   title String
-  users User[]
+  users User[] @relation("UserCourses")
   assignments Assignment[]
 }
 
 model Assignment{
-  title String
+  id Int @id @default(autoincrement())
+  title String 
   due_date DateTime?
   submissions Int
   description String
+  course Course @relation(fields:[courseId], references:[id] )
+  courseId  Int
 }
