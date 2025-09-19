@@ -1,4 +1,4 @@
-# [Prisma Schema](packages/database/prisma/schema.prisma)
+# [Prisma Schema](../../packages/database/prisma/schema.prisma)
 
 # [Users](User_rows.csv)
 
