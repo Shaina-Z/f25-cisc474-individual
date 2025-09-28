@@ -5,9 +5,10 @@ import {UserModule} from './user.module'
 import {AssignmentModule} from './assignments.module'
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
+import { CourseModule } from './course.module';
 
 @Module({
-  imports: [LinksModule,UserModule, AssignmentModule],
+  imports: [LinksModule,UserModule, AssignmentModule, CourseModule],
   controllers: [AppController],
   providers: [AppService],
 })
