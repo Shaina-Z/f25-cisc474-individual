@@ -7,7 +7,7 @@ export class UserController{
     constructor(
         private readonly userService: UserService){}
     
-     @Get('user/:id')
+     @Get('/:id')
     async getUserById(@Param('id') id: string): Promise<UserModel> {
     return this.userService.findUser({ id: Number(id) });
   }    

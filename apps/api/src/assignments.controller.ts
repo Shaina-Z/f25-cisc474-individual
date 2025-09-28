@@ -6,7 +6,7 @@ import { AssignmentService } from './assignments.service';
 export class AssignmentController{
     constructor(
         private readonly assignmentService: AssignmentService){}
-    @Get('assignment/:id')
+    @Get('/:id')
             async getUserById(@Param('id') id: string): Promise<AssignmentModel> {
             return this.assignmentService.findAssignment({ id: Number(id) });
           } 

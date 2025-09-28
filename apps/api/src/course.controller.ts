@@ -6,7 +6,7 @@ import { CourseService } from './course.service';
 export class CourseController{
     constructor(
         private readonly courseService: CourseService){}
-    @Get('course/:id')
+    @Get('/:id')
         async getUserById(@Param('id') id: string): Promise<CourseModel> {
         return this.courseService.findCourse({ id: Number(id) });
       }  
