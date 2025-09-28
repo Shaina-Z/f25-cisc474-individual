@@ -6,7 +6,15 @@ import { User, Prisma} from '@repo/database';
 export class UserService {
    constructor(private prisma: PrismaService) {}
 
-    async users(params: {
+     async findUser(
+    userWhereUniqueInput: Prisma.UserWhereUniqueInput,
+  ): Promise<User | null> {
+    return this.prisma.user.findUnique({
+      where: userWhereUniqueInput,
+    });
+  }
+   
+    async findUsers(params: {
      skip?: number;
     take?: number;
     cursor?: Prisma.UserWhereUniqueInput;
@@ -16,5 +24,4 @@ export class UserService {
     const{skip, take, cursor, where, orderBy } = params
     return this.prisma.user.findMany({skip, take, cursor, where, orderBy })
   }
-
 }

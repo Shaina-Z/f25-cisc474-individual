@@ -1,4 +1,4 @@
-import { Controller, Get} from '@nestjs/common';
+import { Controller, Get, Param} from '@nestjs/common';
 import {User as UserModel} from '@repo/database';
 import { UserService } from './user.service';
 
@@ -7,9 +7,14 @@ export class UserController{
     constructor(
         private readonly userService: UserService){}
     
+     @Get('user/:id')
+    async getUserById(@Param('id') id: string): Promise<UserModel> {
+    return this.userService.findUser({ id: Number(id) });
+  }    
+
     @Get()
     async findAll():(Promise<UserModel[]>){
-        return this.userService.users({})
+        return this.userService.findUsers({})
     }
 
 
