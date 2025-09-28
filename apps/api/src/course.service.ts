@@ -6,6 +6,14 @@ import { Course, Prisma} from '@repo/database';
 export class CourseService {
    constructor(private prisma: PrismaService) {}
 
+   async findCourse(
+       courseWhereUniqueInput: Prisma.CourseWhereUniqueInput,
+     ): Promise<Course | null> {
+       return this.prisma.course.findUnique({
+         where: courseWhereUniqueInput,
+       });
+     }
+
     async findCourses(params: {
      skip?: number;
     take?: number;
