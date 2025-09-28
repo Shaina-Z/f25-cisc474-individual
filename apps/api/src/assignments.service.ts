@@ -6,6 +6,14 @@ import { Assignment, Prisma} from '@repo/database';
 export class AssignmentService {
    constructor(private prisma: PrismaService) {}
 
+   async findAssignment(
+          assignmentWhereUniqueInput: Prisma.AssignmentWhereUniqueInput,
+        ): Promise<Assignment | null> {
+          return this.prisma.assignment.findUnique({
+            where: assignmentWhereUniqueInput,
+          });
+        }
+
     async findAssignments(params: {
      skip?: number;
     take?: number;
