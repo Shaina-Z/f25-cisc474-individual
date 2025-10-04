@@ -1,6 +1,6 @@
 export async function getAssignments() {
 
-  const res = await fetch(process.env.BACKEND_URL + "/assignment")
+  const res = await fetch(process.env.BACKEND_URL + "assignment")
   const data = await res.json()
 
   
