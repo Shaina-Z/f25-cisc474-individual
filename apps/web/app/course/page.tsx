@@ -1,7 +1,10 @@
 import "./page.css";
 import Link from "next/link";
-
+import Assignments from './assignment'
+import { getAssignments } from './getAssignments'
+import { Suspense } from 'react'
 export default function Course(){
+    const assignments = getAssignments()
     return(
         <div>
             <Link className="back-button" href="./course-view">Back</Link>
@@ -14,6 +17,9 @@ export default function Course(){
             <nav>
         <Link className="assignment" href="/assignment">Assignment</Link>
         </nav>
+         <Suspense fallback={<div>Loading...</div>}>
+              <Assignments assignments={assignments} />
+            </Suspense>
         </h2>
         </div>
        

@@ -1,6 +1,6 @@
 export async function getCourses() {
 
-  const res = await fetch("http://localhost:3000/course")
+  const res = await fetch(process.env.BACKEND_URL + "/course")
   const data = await res.json()
 
   
