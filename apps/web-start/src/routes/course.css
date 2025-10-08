@@ -1,0 +1,31 @@
+.profile-border{
+position: fixed;         
+  top: 0;                  
+  bottom: 0;              
+  left: 10%;               
+  width: 0;                
+  border-left: 1px solid black; 
+  z-index: -1; 
+}
+.title{
+    font-size: 250%;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+
+.assignment{
+    font-size: 75%;;
+    font-weight: 100;
+    text-align: center;
+}
+
+.assignments-container{
+    text-align: center;
+    font-size: 175%;
+    border: 1px solid black;
+    margin-left: 10vw;
+}
+
+.back-button{
+    font-size:150%;
+}
