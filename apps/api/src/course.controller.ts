@@ -1,6 +1,7 @@
-import { Controller, Get, Param} from '@nestjs/common';
+import { Body, Controller, Get, Param, Post} from '@nestjs/common';
 import {Course as CourseModel} from '@repo/database';
 import { CourseService } from './course.service';
+import { CourseIn } from '@repo/api/courses';
 
 @Controller('course')
 export class CourseController{
@@ -15,6 +16,11 @@ export class CourseController{
     async findAll():(Promise<CourseModel[]>){
         return this.courseService.findCourses({})
     }
+
+    @Post()
+    create(@Body() createCourseDto: CourseIn) {
+    return this.courseService.create(createCourseDto);
+  }
 
 
 }

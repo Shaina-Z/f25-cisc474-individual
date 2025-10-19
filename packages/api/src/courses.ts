@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
+
 export const CourseOut= 
     z.object({
         id:z.number(),
