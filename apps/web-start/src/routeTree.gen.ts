@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as EditRouteImport } from './routes/edit'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CourseRouteImport } from './routes/course'
 import { Route as AssignmentRouteImport } from './routes/assignment'
 import { Route as IndexRouteImport } from './routes/index'
 
+const EditRoute = EditRouteImport.update({
+  id: '/edit',
+  path: '/edit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -40,12 +46,14 @@ export interface FileRoutesByFullPath {
   '/assignment': typeof AssignmentRoute
   '/course': typeof CourseRoute
   '/dashboard': typeof DashboardRoute
+  '/edit': typeof EditRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assignment': typeof AssignmentRoute
   '/course': typeof CourseRoute
   '/dashboard': typeof DashboardRoute
+  '/edit': typeof EditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +61,14 @@ export interface FileRoutesById {
   '/assignment': typeof AssignmentRoute
   '/course': typeof CourseRoute
   '/dashboard': typeof DashboardRoute
+  '/edit': typeof EditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assignment' | '/course' | '/dashboard'
+  fullPaths: '/' | '/assignment' | '/course' | '/dashboard' | '/edit'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assignment' | '/course' | '/dashboard'
-  id: '__root__' | '/' | '/assignment' | '/course' | '/dashboard'
+  to: '/' | '/assignment' | '/course' | '/dashboard' | '/edit'
+  id: '__root__' | '/' | '/assignment' | '/course' | '/dashboard' | '/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,10 +76,18 @@ export interface RootRouteChildren {
   AssignmentRoute: typeof AssignmentRoute
   CourseRoute: typeof CourseRoute
   DashboardRoute: typeof DashboardRoute
+  EditRoute: typeof EditRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/edit': {
+      id: '/edit'
+      path: '/edit'
+      fullPath: '/edit'
+      preLoaderRoute: typeof EditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -107,6 +124,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssignmentRoute: AssignmentRoute,
   CourseRoute: CourseRoute,
   DashboardRoute: DashboardRoute,
+  EditRoute: EditRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
