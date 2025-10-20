@@ -11,7 +11,7 @@ export type CourseOut = z.infer<typeof CourseOut>
 
 export const CourseIn =
     z.object({
-        id:z.number,
-        title:z.string
+        id:z.number(),
+        title:z.string()
     })
 export type CourseIn = z.infer<typeof CourseIn>
