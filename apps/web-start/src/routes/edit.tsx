@@ -6,8 +6,10 @@ export const Route = createFileRoute('/edit')({
 
 function RouteComponent() {
   return <div>
+    <h1>Edit/Add</h1>
     <input
     type="text"
-    placeholder='Enter Course Name'></input>
+    placeholder='Enter Course Name'
+    ></input>
   </div>;
 }
