@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from './prisma.service';
 import { Course, Prisma} from '@repo/database';
-import { CourseIn, CourseOut} from '@repo/api/courses';
+import { CourseIn, CourseOut, CourseUpdate} from '@repo/api/courses';
 @Injectable()
 export class CourseService {
    constructor(private prisma: PrismaService) {}
@@ -32,5 +32,12 @@ export class CourseService {
       title: newCourse.title,
       id: newCourse.id,
     };
+  }
+
+    update(id: number, updateCourseDto: CourseUpdate) {
+    return this.prisma.course.update({
+      where: { id },
+      data: updateCourseDto,
+    });
   }
 }
