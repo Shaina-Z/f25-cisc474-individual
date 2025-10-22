@@ -40,4 +40,10 @@ export class CourseService {
       data: updateCourseDto,
     });
   }
+
+  remove(id: number) {
+    return this.prisma.course.delete({
+      where: { id },
+    });
+  }
 }
