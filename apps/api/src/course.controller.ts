@@ -3,8 +3,8 @@ import {Course as CourseModel} from '@repo/database';
 import { CourseService } from './course.service';
 import { CourseIn } from '@repo/api/courses';
 import { AuthGuard } from '@nestjs/passport';
-import { CurrentUser } from './current-user.decorator';
-import { JwtUser } from './jwt.strategy';
+//import { CurrentUser } from './current-user.decorator';
+//import { JwtUser } from './jwt.strategy';
 
 @Controller('course')
 export class CourseController{
