@@ -15,7 +15,7 @@ type JwtPayload = {
 };
 
 export interface JwtUser {
-  userId: string;
+  userId: number;
   provider: string;
   providerId: string;
   sub: string;

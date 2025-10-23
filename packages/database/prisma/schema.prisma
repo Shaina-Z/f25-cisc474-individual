@@ -18,6 +18,8 @@ model User {
   email         String?   @unique
   role          String
   courses       Course[] @relation("UserCourses")
+
+  Authentication Authentication[]
 }
 
 model Course{
@@ -35,4 +37,12 @@ model Assignment{
   description String
   course Course @relation(fields:[courseId], references:[id] )
   courseId  Int
+}
+
+model Authentication {
+  id         Int @id @default(autoincrement())
+  user       User   @relation(fields: [userId], references: [id])
+  userId     Int
+  provider   String
+  providerId String
 }
