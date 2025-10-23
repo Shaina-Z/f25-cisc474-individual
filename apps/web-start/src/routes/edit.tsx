@@ -24,8 +24,21 @@ function RouteComponent() {
       return res.json() 
     },
   })
+  const deleteMutation = useMutation<void, Error, number>({
+  mutationFn: async (id) => {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}course/${id}`, {
+      method: 'DELETE',
+    });
 
+    if (!res.ok) {
+      throw new Error('Failed to delete course');
+    }
+
+    return res.json();
+  },
+});
   const [newTitle,setNewTitle] = useState('');
+  const [id, setID]=useState("");
   return <div>
     <h1>Edit/Add</h1>
     <input
@@ -52,6 +65,14 @@ function RouteComponent() {
           >
             Create Course
           </button>
+    <h2>Delete</h2>
+    <input
+    type="text"
+    placeholder='Enter Course Name'
+    value={id}
+    onChange={(e)=> setID(e.target.value)}
+    ></input>
+          <button onClick={()=>{deleteMutation.mutate(Number(id))}}>Delete Course</button>
         </>
       )}
     </div>
