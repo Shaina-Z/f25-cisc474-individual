@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import "./dashboard.css"
 import GetCourses from '../getCourses'
-import GetAssignments from '../getAssignments'
+
 
 export const Route = createFileRoute('/dashboard')({
   component: RouteComponent,
