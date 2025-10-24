@@ -10,7 +10,7 @@ export const Route = createFileRoute('/dashboard')({
 
 function RouteComponent() {
    const { data: user } = useCurrentUser();
-  const query = useApiQuery<Array<CourseOut>>(['courses'], '/course');
+  const query = useApiQuery<Array<CourseOut>>(['courses'], 'course');
 
   const { data, refetch, error, showLoading } = query;
 
