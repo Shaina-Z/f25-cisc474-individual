@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-
+import type {CourseUpdate} from "@/repo/api/courses"
 export const Route = createFileRoute('/edit')({
   component: RouteComponent,
 });
@@ -37,10 +37,23 @@ function RouteComponent() {
     return res.json();
   },
 });
+const updateMutation = useMutation({
+  mutationFn: async (data: { id: number; update: CourseUpdate }) => {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}course/${id}`, {
+      method: 'PATCH',
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to edit course');
+    }
+
+    return res.json();
+  },
+});
   const [newTitle,setNewTitle] = useState('');
   const [id, setID]=useState("");
   return <div>
-    <h1>Edit/Add</h1>
+    <h1>/Add</h1>
     <input
     type="text"
     placeholder='Enter Course Name'
@@ -68,7 +81,7 @@ function RouteComponent() {
     <h2>Delete</h2>
     <input
     type="text"
-    placeholder='Enter Course Name'
+    placeholder='Enter Course ID'
     value={id}
     onChange={(e)=> setID(e.target.value)}
     ></input>
@@ -76,5 +89,19 @@ function RouteComponent() {
         </>
       )}
     </div>
+    <h3>Edit</h3>
+     <input
+    type="text"
+    placeholder='Enter Course ID'
+    value={id}
+    onChange={(e)=> setID(e.target.value)}
+    ></input>
+    <input
+    type="text"
+    placeholder='Enter Course Name'
+    value={newTitle}
+    onChange={(e)=> setNewTitle(e.target.value)}
+    ></input>
+   <button onClick={()=>{updateMutation.mutate(Number(id),newTitle)}}>Delete Course</button>
   </div>;
 }

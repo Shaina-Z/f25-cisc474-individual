@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Param, Post,UseGuards} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post,UseGuards} from '@nestjs/common';
 import {Course as CourseModel} from '@repo/database';
 import { CourseService } from './course.service';
-import { CourseIn } from '@repo/api/courses';
+import { CourseIn, CourseUpdate } from '@repo/api/courses';
 import { AuthGuard } from '@nestjs/passport';
 import { CurrentUser } from './current-user.decorator';
 import { JwtUser } from './jwt.strategy';
@@ -24,6 +24,16 @@ export class CourseController{
     @Post()
     create(@Body() createCourseDto: CourseIn) {
     return this.courseService.create(createCourseDto);
+  }
+
+  @Patch("/:id")
+  updateCourse(@Param('id') id:string, @Body() updateCourseDTO:CourseUpdate){
+    return this.courseService.update(Number(id),updateCourseDTO);
+  }
+
+  @Delete("/:id")
+  remove(@Param('id') id:string){
+      return this.courseService.remove(Number(id));
   }
 
 
