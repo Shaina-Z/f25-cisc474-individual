@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { backendFetcher } from "./integrations/fetcher"
+import { useBackendFetcher } from "./integrations/fetcher"
 
 interface Course {
   id: string
@@ -7,9 +7,10 @@ interface Course {
 }
 
 function GetCourses() {
+  const fetcher=useBackendFetcher();
   const { isPending, isError, data, error } = useQuery<Array<Course>>({
     queryKey: ['courses'],
-    queryFn: backendFetcher("course"),
+    queryFn: ()=>fetcher('/course'),
   })
 
   if (isPending) {
