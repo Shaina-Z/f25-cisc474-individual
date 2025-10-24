@@ -10,7 +10,7 @@ import { JwtUser } from './jwt.strategy';
 export class CourseController{
     constructor(
         private readonly courseService: CourseService){}
-    @UseGuards(AuthGuard('jwt'))
+    
     @Get('/:id')
         async getUserById(@Param('id') id: string): Promise<CourseModel> {
         return this.courseService.findCourse({ id: Number(id) });

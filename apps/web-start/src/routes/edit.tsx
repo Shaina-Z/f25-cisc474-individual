@@ -1,7 +1,8 @@
 import { useMutation } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import type {CourseUpdate} from "@/repo/api/courses"
+import type {CourseUpdate} from "/Users/shainazaccagnino/f25-cisc474-individual/packages/api/src/courses.ts"
+
 export const Route = createFileRoute('/edit')({
   component: RouteComponent,
 });
@@ -104,7 +105,10 @@ const updateMutation = useMutation({
     ></input>
    <button onClick={()=>{updateMutation.mutate({
     id: Number(id),
-    update: { title: 'Updated Course Title' },
-    })}}>Edit Course</button>
+    update: {
+      title: 'Updated Course Title',
+      id: Number(id)
+    },
+  })}}>Edit Course</button>
   </div>;
 }
