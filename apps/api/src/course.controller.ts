@@ -16,7 +16,7 @@ export class CourseController{
         async getUserById(@Param('id') id: string): Promise<CourseModel> {
         return this.courseService.findCourse({ id: Number(id) });
       }  
-
+  @UseGuards(AuthGuard('jwt'))
     @Get()
     async findAll():(Promise<CourseModel[]>){
         return this.courseService.findCourses({})
