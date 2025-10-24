@@ -10,27 +10,27 @@ import { JwtUser } from './jwt.strategy';
 export class CourseController{
     constructor(
         private readonly courseService: CourseService){}
-
+    @UseGuards(AuthGuard('jwt'))
     @Get('/:id')
         async getUserById(@Param('id') id: string): Promise<CourseModel> {
         return this.courseService.findCourse({ id: Number(id) });
       }  
-  
+    @UseGuards(AuthGuard('jwt'))
     @Get()
     async findAll():(Promise<CourseModel[]>){
         return this.courseService.findCourses({})
     }
-
+    @UseGuards(AuthGuard('jwt'))
     @Post()
     create(@Body() createCourseDto: CourseIn) {
     return this.courseService.create(createCourseDto);
   }
-
+  @UseGuards(AuthGuard('jwt'))
   @Patch("/:id")
   updateCourse(@Param('id') id:string, @Body() updateCourseDTO:CourseUpdate){
     return this.courseService.update(Number(id),updateCourseDTO);
   }
-
+  @UseGuards(AuthGuard('jwt'))
   @Delete("/:id")
   remove(@Param('id') id:string){
       return this.courseService.remove(Number(id));
