@@ -140,7 +140,7 @@ export type CurrentUser = {
 };
 
 export function useCurrentUser(opts?: { scope?: string }) {
-  return useApiQuery<CurrentUser>(['users', 'me'], '/users/me', {
+  return useApiQuery<CurrentUser>(['user', 'me'], 'user/me', {
     // pass through an optional scope if your API requires it
     scope: opts?.scope,
     // You can uncomment any of these if you want the same perf tweaks everywhere:
