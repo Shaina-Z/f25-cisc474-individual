@@ -102,6 +102,9 @@ const updateMutation = useMutation({
     value={newTitle}
     onChange={(e)=> setNewTitle(e.target.value)}
     ></input>
-   <button onClick={()=>{updateMutation.mutate(Number(id),newTitle)}}>Delete Course</button>
+   <button onClick={()=>{updateMutation.mutate({
+    id: Number(id),
+    update: { title: 'Updated Course Title' },
+    })}}>Edit Course</button>
   </div>;
 }
