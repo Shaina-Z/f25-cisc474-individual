@@ -11,18 +11,16 @@ export class CourseController{
     constructor(
         private readonly courseService: CourseService){}
 
-    @UseGuards(AuthGuard('jwt'))
     @Get('/:id')
         async getUserById(@Param('id') id: string): Promise<CourseModel> {
         return this.courseService.findCourse({ id: Number(id) });
       }  
-  @UseGuards(AuthGuard('jwt'))
+  
     @Get()
     async findAll():(Promise<CourseModel[]>){
         return this.courseService.findCourses({})
     }
 
-    @UseGuards(AuthGuard('jwt'))
     @Post()
     create(@Body() createCourseDto: CourseIn) {
     return this.courseService.create(createCourseDto);
