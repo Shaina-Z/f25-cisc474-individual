@@ -3,6 +3,7 @@
   "ui": "tui",
   "tasks": {
     "build": {
+      "env": ["FRONTEND_URL", "AUTH0_ISSUER_URL", "AUTH0_AUDIENCE"],
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [
