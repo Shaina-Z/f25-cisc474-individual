@@ -10,7 +10,7 @@ function GetCourses() {
   const fetcher=useBackendFetcher();
   const { isPending, isError, data, error } = useQuery<Array<Course>>({
     queryKey: ['courses'],
-    queryFn: ()=>fetcher('course'),
+    queryFn: ()=>fetcher('/course'),
   })
 
   if (isPending) {
