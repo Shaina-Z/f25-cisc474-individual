@@ -14,7 +14,7 @@ function RouteComponent() {
   const [id, setID]=useState("");
    const updateMutation = useApiMutation<CourseIn, CourseUpdate>({
       endpoint: (variables) => ({
-        path: '/course',
+        path: `/course/${variables.id}`,
         method: 'PATCH',
       }),
       invalidateKeys: [['courses']],
