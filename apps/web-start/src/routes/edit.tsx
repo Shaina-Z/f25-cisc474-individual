@@ -1,39 +1,38 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import { useApiMutation } from '../integrations/api';
+import { useApiMutation, useCurrentUser } from '../integrations/api';
 import type {CourseIn, CourseOut, CourseUpdate} from "/Users/shainazaccagnino/f25-cisc474-individual/packages/api/src/courses.ts"
 
 export const Route = createFileRoute('/edit')({
   component: RouteComponent,
 });
 
-function RouteComponent() {
+function RouteComponent() {const { data: currentUser } = useCurrentUser();
   const queryClient = useQueryClient();
-
+  const [newTitle,setNewTitle] = useState('');
+  const [id, setID]=useState("");
   const mutation = useApiMutation<CourseIn, CourseOut>({
     endpoint: (variables) => ({
-      path: '/courses',
+      path: '/course',
       method: 'POST',
     }),
     invalidateKeys: [['courses']],
   });
   const deleteMutation = useApiMutation<CourseIn, CourseOut>({
     endpoint: (variables) => ({
-      path: '/courses',
+      path: '/course',
       method: 'DELETE',
     }),
     invalidateKeys: [['courses']],
   });
   const updateMutation = useApiMutation<CourseIn, CourseOut>({
     endpoint: (variables) => ({
-      path: '/courses',
+      path: '/course',
       method: 'PATCH',
     }),
     invalidateKeys: [['courses']],
   });
-  const [newTitle,setNewTitle] = useState('');
-  const [id, setID]=useState("");
   return <div>
     <h1>/Add</h1>
     <input
