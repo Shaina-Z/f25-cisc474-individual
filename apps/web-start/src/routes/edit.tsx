@@ -19,9 +19,9 @@ function RouteComponent() {const { data: currentUser } = useCurrentUser();
     }),
     invalidateKeys: [['courses']],
   });
-  const deleteMutation = useApiMutation<CourseIn, CourseOut>({
+  const deleteMutation = useApiMutation<{id:number}>({
     endpoint: (variables) => ({
-      path: '/course',
+      path: `/course/${variables.id}`,
       method: 'DELETE',
     }),
     invalidateKeys: [['courses']],
@@ -56,7 +56,7 @@ function RouteComponent() {const { data: currentUser } = useCurrentUser();
             onClick={() => {
               mutation.mutate({
                 title: newTitle,
-                id: 0
+                id:0
               })
             }}
           >
@@ -69,7 +69,7 @@ function RouteComponent() {const { data: currentUser } = useCurrentUser();
     value={id}
     onChange={(e)=> setID(e.target.value)}
     ></input>
-          <button onClick={()=>{deleteMutation.mutate(Number(id))}}>Delete Course</button>
+          <button onClick={()=>{deleteMutation.mutate({ id: Number(id) })}}>Delete Course</button>
         </>
       )}
     </div>
