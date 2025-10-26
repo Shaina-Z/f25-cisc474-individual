@@ -14,8 +14,10 @@ export function useBackendFetcher() {
     if (isAuthenticated) {
       try{
         const token = await getAccessTokenSilently({
-          audience: import.meta.env.VITE_AUTH0_AUDIENCE,
-          scope: 'read:courses',
+          authorizationParams: {
+      audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+      scope: 'read:courses',
+      },
         } as GetTokenSilentlyOptions);
         console.log('🔑 Access token:', token);
         headers['Authorization'] = `Bearer ${token}`;
