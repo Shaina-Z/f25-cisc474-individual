@@ -10,7 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as HomeRouteImport } from './routes/home'
-import { Route as EditRouteImport } from './routes/edit'
+import { Route as EditRouteImport } from './routes/add.tsx'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CourseRouteImport } from './routes/course'
 import { Route as AssignmentRouteImport } from './routes/assignment'
