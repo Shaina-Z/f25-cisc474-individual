@@ -40,9 +40,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       }),
 
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      audience: process.env.AUTH0_AUDIENCE,
-      issuer: `${process.env.AUTH0_ISSUER_URL}`,
-      algorithms: ['RS256'],
+      audience: [
+      process.env.AUTH0_AUDIENCE,
+      `${process.env.AUTH0_ISSUER_URL}userinfo`,
+    ],
+    issuer: process.env.AUTH0_ISSUER_URL,
+    algorithms: ['RS256'],
     });
   }
 
