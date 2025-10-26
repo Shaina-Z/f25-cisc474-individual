@@ -10,7 +10,7 @@ export const Route = createFileRoute('/edit')({
 function RouteComponent() {
    const mutation = useMutation<void, Error, { title: string }>({
     mutationFn: async (newCourse) => {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}course`, {
+      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/course`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ function RouteComponent() {
   })
   const deleteMutation = useMutation<void, Error, number>({
   mutationFn: async (id) => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}course/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/course/${id}`, {
       method: 'DELETE',
     });
 
@@ -40,7 +40,7 @@ function RouteComponent() {
 });
 const updateMutation = useMutation({
   mutationFn: async (data: { id: number; update: CourseUpdate }) => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}course/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/course/${id}`, {
       method: 'PATCH',
     });
 

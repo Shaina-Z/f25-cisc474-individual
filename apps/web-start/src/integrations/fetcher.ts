@@ -17,7 +17,7 @@ export function useBackendFetcher() {
           audience: import.meta.env.VITE_AUTH0_AUDIENCE,
         } as GetTokenSilentlyOptions);
         console.log('🔑 Access token:', token);
-        headers['Authorization'] = 'Bearer ${token}';
+        headers['Authorization'] = `Bearer ${token}`;
       } catch (error) {
         console.error('Error getting access token:', error);
       }
