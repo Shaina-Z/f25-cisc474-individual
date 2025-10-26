@@ -88,10 +88,7 @@ function RouteComponent() {const { data: currentUser } = useCurrentUser();
     ></input>
    <button onClick={()=>{updateMutation.mutate({
     id: Number(id),
-    update: {
-      title: 'Updated Course Title',
-      id: Number(id)
-    },
+    title: newTitle,
   })}}>Edit Course</button>
   </div>;
 }
