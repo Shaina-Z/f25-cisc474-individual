@@ -1,56 +1,37 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createFileRoute } from '@tanstack/react-router';
 import { useState } from 'react';
-import type {CourseUpdate} from "/Users/shainazaccagnino/f25-cisc474-individual/packages/api/src/courses.ts"
+import { useApiMutation } from '../integrations/api';
+import type {CourseIn, CourseOut, CourseUpdate} from "/Users/shainazaccagnino/f25-cisc474-individual/packages/api/src/courses.ts"
 
 export const Route = createFileRoute('/edit')({
   component: RouteComponent,
 });
 
 function RouteComponent() {
-   const mutation = useMutation<void, Error, { title: string }>({
-    mutationFn: async (newCourse) => {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/course`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newCourse),
-      })
+  const queryClient = useQueryClient();
 
-      if (!res.ok) {
-        throw new Error('Network response was not ok')
-      }
-
-      return res.json() 
-    },
-  })
-  const deleteMutation = useMutation<void, Error, number>({
-  mutationFn: async (id) => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/course/${id}`, {
+  const mutation = useApiMutation<CourseIn, CourseOut>({
+    endpoint: (variables) => ({
+      path: '/courses',
+      method: 'POST',
+    }),
+    invalidateKeys: [['courses']],
+  });
+  const deleteMutation = useApiMutation<CourseIn, CourseOut>({
+    endpoint: (variables) => ({
+      path: '/courses',
       method: 'DELETE',
-    });
-
-    if (!res.ok) {
-      throw new Error('Failed to delete course');
-    }
-
-    return res.json();
-  },
-});
-const updateMutation = useMutation({
-  mutationFn: async (data: { id: number; update: CourseUpdate }) => {
-    const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/course/${id}`, {
+    }),
+    invalidateKeys: [['courses']],
+  });
+  const updateMutation = useApiMutation<CourseIn, CourseOut>({
+    endpoint: (variables) => ({
+      path: '/courses',
       method: 'PATCH',
-    });
-
-    if (!res.ok) {
-      throw new Error('Failed to edit course');
-    }
-
-    return res.json();
-  },
-});
+    }),
+    invalidateKeys: [['courses']],
+  });
   const [newTitle,setNewTitle] = useState('');
   const [id, setID]=useState("");
   return <div>
@@ -74,7 +55,10 @@ const updateMutation = useMutation({
 
           <button
             onClick={() => {
-              mutation.mutate({ title: newTitle })
+              mutation.mutate({
+                title: newTitle,
+                id: 0
+              })
             }}
           >
             Create Course
