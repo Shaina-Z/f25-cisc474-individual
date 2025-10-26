@@ -15,6 +15,7 @@ export function useBackendFetcher() {
       try{
         const token = await getAccessTokenSilently({
           audience: import.meta.env.VITE_AUTH0_AUDIENCE,
+          scope: 'read:courses',
         } as GetTokenSilentlyOptions);
         console.log('🔑 Access token:', token);
         headers['Authorization'] = `Bearer ${token}`;
@@ -29,7 +30,7 @@ export function useBackendFetcher() {
       credentials: 'include',
     });
 
-    if (!response.ok) throw new Error("Fetch failed: ${response.statusText}");
+    if (!response.ok) throw new Error(`Fetch failed: ${response.statusText}`);
     return response.json() as Promise<T>;
 
     if(response.status === 204)
