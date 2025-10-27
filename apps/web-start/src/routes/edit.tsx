@@ -34,10 +34,24 @@ function RouteComponent() {
     value={newTitle}
     onChange={(e)=> setNewTitle(e.target.value)}
     ></input>
+    <div>
+      {updateMutation.isPending ? (
+        'Editing course...'
+      ) : (
+        <>
+          {updateMutation.isError ? (
+            <div>An error occurred: {updateMutation.error.message}</div>
+          ) : null}
+
+          {updateMutation.isSuccess ? <div>Edited Course!</div> : null}
    <button onClick={()=>{updateMutation.mutate({
     id: Number(id),
     title: newTitle,
   })}}>Edit Course</button>
+  </>
+      )}
+  </div>
+  <h2><Link to="/dashboard">Back to Courses</Link></h2>
   </div>
   );
 }

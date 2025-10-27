@@ -10,8 +10,10 @@ export const Route = createFileRoute('/dashboard')({
 function RouteComponent() {
   return  <div className="main">
     <a className="profile-pic"></a>
+    <div className='links'>
     <Link to={"/add"}>Add/Delete Courses</Link>
     <Link to={"/edit"}>Edit Courses</Link>
+    </div>
           <h1 className="title">Courses
                 <hr className="profile-border"></hr>
                 </h1>.

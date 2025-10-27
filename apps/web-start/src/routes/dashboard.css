@@ -40,3 +40,6 @@
   border-left: 1px solid black; 
   z-index: -1; 
 }
+.links{
+    margin: 20px;
+}
